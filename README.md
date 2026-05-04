@@ -1,0 +1,1 @@
+ExpressionEvaluator is an expression parser coded in C++. The program can parse the arithmetic operations multiplication, division, addition, and subtraction. It is currently unable to parse groupings, but this is planned for a future update. 
