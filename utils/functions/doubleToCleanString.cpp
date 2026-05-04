@@ -2,6 +2,8 @@
 // Created by coops on 5/3/2026.
 //
 
+#include "doubleToCleanString.h"
+
 #include <sstream>
 
 std::string doubleToCleanString(double value) {

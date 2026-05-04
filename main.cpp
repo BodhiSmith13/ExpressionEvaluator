@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <array>
-#include <cmath>
 #include <iostream>
 #include <vector>
 
@@ -9,8 +8,6 @@
 #include "utils/functions/doubleToCleanString.h"
 #include "utils/values/debug.h"
 #include "utils/functions/countNegativeNumbers.h"
-#include "utils/functions/findOperator.h"
-#include "utils/functions/indexNegativeNumbers.h"
 #include "utils/values/validOperators.h"
 
 
@@ -126,8 +123,6 @@ int main() {
                 } // end of for loop
 
             } // end of if statement
-
-
 
     } // end of for loop
 

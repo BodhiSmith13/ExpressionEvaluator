@@ -6,7 +6,9 @@
 #include <algorithm>
 #include <array>
 #include <string>
+
 #include "../values/validOperators.h"
+#include "countNegativeNumbers.h"
 
 int countNegativeNumbers(const std::string& input) {
 

@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 
+#include "stringToDouble.h"
+
 double stringToDouble(std::string input) {
 
     std::cout << input[0] << std::endl;
