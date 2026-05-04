@@ -57,10 +57,7 @@ int main() {
     } // end of if statement
 
     for (int i = 0; i < numOps; i++) {
-
-        while (true) {
-
-            /* Partial fix
+        bool opFound = false;
 
             for (int i = 0; i < input.length(); i++) {
 
@@ -73,6 +70,7 @@ int main() {
                         input = replaceGroup(input, pair.getPair(),
                             doubleToCleanString(pair.simplify()));
                         if (DEBUG) {std::cout << "Input after replacement: " << input << std::endl;}
+                        opFound = true;
                         break;
 
                     } // end of if statement
@@ -84,6 +82,7 @@ int main() {
                         input = replaceGroup(input, pair.getPair(),
                             doubleToCleanString(pair.simplify()));
                         if (DEBUG) {std::cout << "Input after replacement: " << input << std::endl;}
+                        opFound = true;
                         break;
 
                     } // end of if statement
@@ -92,103 +91,43 @@ int main() {
 
             } // end of for loop
 
-            for (int i = 0; i < input.length(); i++) {
+            if (!opFound) {
 
-                if (input[i] == '+' || input[i] == '-') {
+                for (int i = 0; i < input.length(); i++) {
 
-                    if (input[i] == '+') {
+                    if (input[i] == '+' || input[i] == '-') {
 
-                        if (DEBUG) {std::cout << "Addition detected." << std::endl;}
-                        pair = findPair(input, i);
-                        input = replaceGroup(input, pair.getPair(),
-                            doubleToCleanString(pair.simplify()));
-                        if (DEBUG) {std::cout << "Input after replacement: " << input << std::endl;}
-                        break;
+                        if (input[i] == '+') {
+
+                            if (DEBUG) {std::cout << "Addition detected." << std::endl;}
+                            pair = findPair(input, i);
+                            input = replaceGroup(input, pair.getPair(),
+                                doubleToCleanString(pair.simplify()));
+                            if (DEBUG) {std::cout << "Input after replacement: " << input << std::endl;}
+                            break;
+
+                        } // end of if statement
+
+                        if (input[i] == '-' && i != 0
+                        && std::find(validOperators.begin(), validOperators.end(), input[i-1])
+                        == validOperators.end()) {
+
+                            if (DEBUG) {std::cout << "Subtraction detected at " << i << std::endl;}
+                            pair = findPair(input, i);
+                            input = replaceGroup(input, pair.getPair(),
+                                doubleToCleanString(pair.simplify()));
+                            if (DEBUG) {std::cout << "Input after replacement: " << input << std::endl;}
+                            break;
+
+                        } // end of if statement
 
                     } // end of if statement
 
-                    if (input[i] == '-' && (i != 0
-                    || std::find(validOperators.begin(), validOperators.end(), input[i-1])
-                    == validOperators.end())) {
+                } // end of for loop
 
-                        if (DEBUG) {std::cout << "Subtraction detected at " << i << std::endl;}
-                        pair = findPair(input, i);
-                        input = replaceGroup(input, pair.getPair(),
-                            doubleToCleanString(pair.simplify()));
-                        if (DEBUG) {std::cout << "Input after replacement: " << input << std::endl;}
-                        break;
+            } // end of if statement
 
-                    } // end of if statement
 
-                } // end of if statement
-            }
-
-            */
-
-            if (input[0] == '-'
-                && input.find('*') == std::string::npos
-                && input.find('/') == std::string::npos
-                && input.find('+') == std::string::npos
-                && input.substr(1, input.length()-1).find('-') == std::string::npos) {
-
-                if (DEBUG) {std::cout << "Lone negative found." << std::endl;}
-                break;
-
-                } // end of if statement
-
-                int index = input.find('*');
-
-                if (index != std::string::npos) {
-
-                    if (DEBUG) {std::cout << "Multiplication detected." << std::endl;}
-                    pair = findPair(input, index);
-                    input = replaceGroup(input, pair.getPair(),
-                        doubleToCleanString(pair.simplify()));
-                    if (DEBUG) {std::cout << "Input after replacement: " << input << std::endl;}
-                    break;
-
-                } // end of if statement
-
-                index = input.find('/');
-
-                    if (index != std::string::npos) {
-
-                    if (DEBUG) {std::cout << "Division detected." << std::endl;}
-                    pair = findPair(input, index);
-                    input = replaceGroup(input, pair.getPair(),
-                        doubleToCleanString(pair.simplify()));
-                    if (DEBUG) {std::cout << "Input after replacement: " << input << std::endl;}
-                    break;
-
-                } // end of if statement
-
-                index = input.find('+');
-
-                if (index != std::string::npos) {
-
-                    if (DEBUG) {std::cout << "Addition detected." << std::endl;}
-                    pair = findPair(input, index);
-                    input = replaceGroup(input, pair.getPair(),
-                        doubleToCleanString(pair.simplify()));
-                    if (DEBUG) {std::cout << "Input after replacement: " << input << std::endl;}
-                    break;
-
-                } // end of if statement
-
-                index = findOperator(input, '-', 0);
-
-                if (index != std::string::npos) {
-
-                    if (DEBUG) {std::cout << "Subtraction detected at " << index << std::endl;}
-                    pair = findPair(input, index);
-                    input = replaceGroup(input, pair.getPair(),
-                        doubleToCleanString(pair.simplify()));
-                    if (DEBUG) {std::cout << "Input after replacement: " << input << std::endl;}
-                    break;
-
-                } // end of if statement
-
-        } // end of while loop
 
     } // end of for loop
 
