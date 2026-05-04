@@ -60,7 +60,7 @@ int main() {
 
         while (true) {
 
-            /*
+            /* Partial fix
 
             for (int i = 0; i < input.length(); i++) {
 
