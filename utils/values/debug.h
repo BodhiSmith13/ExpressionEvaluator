@@ -1,0 +1,10 @@
+//
+// Created by coops on 5/3/2026.
+//
+
+#ifndef EXPRESSIONEVALUATOR_DEBUG_H
+#define EXPRESSIONEVALUATOR_DEBUG_H
+
+extern bool DEBUG;
+
+#endif //EXPRESSIONEVALUATOR_DEBUG_H
