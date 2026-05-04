@@ -13,7 +13,7 @@
 
 int main() {
 
-    DEBUG = true;
+    // DEBUG = true;
 
     if (!DEBUG) {
 
@@ -27,34 +27,63 @@ int main() {
     } // end of if statement
 
     std::string input;
-    std::cout << "Enter an expression: ";
-    std::cin >> input;
-    Pair pair;
-    int negativeNum = countNegativeNumbers(input);
 
-    int numOps = std::count(input.begin(), input.end(), '*')
-    + std::count(input.begin(), input.end(), '/')
-    + std::count(input.begin(), input.end(), '+')
-    + std::count(input.begin(), input.end(), '-')
-    - negativeNum;
+    while (input != "exit") {
 
-    if (DEBUG) {
+        while (true) {
 
-        std::cout << "Number of multiplication operators: " << std::count(input.begin(), input.end(), '*')
-        << std::endl;
-        std::cout << "Number of division operators: " << std::count(input.begin(), input.end(), '/')
-        << std::endl;
-        std::cout << "Number of addition operators: " << std::count(input.begin(), input.end(), '+')
-        << std::endl;
-        std::cout << "Number of subtraction operators: " << std::count(input.begin(), input.end(), '-')
-         - negativeNum << std::endl;
-        std::cout << "Number of negative numbers: " << negativeNum << std::endl;
-        std::cout << "Total number of operators: " << numOps << std::endl;
+            bool validExpression = true;
 
-    } // end of if statement
+            std::cout << "Enter an expression containing only digits and the "
+                         "operators +, -, *, and /, or enter \"exit\" to close the program: ";
+            std::cin >> input;
 
-    for (int i = 0; i < numOps; i++) {
-        bool opFound = false;
+            for (int i = 0; i < input.length(); i++) {
+
+                if (!std::isdigit(input[i]) &&
+                    std::find(validOperators.begin(), validOperators.end(), input[i]) == validOperators.end()
+                    && input != "exit") {
+
+                    std::cout << "This expression is not valid." << std::endl;
+                    validExpression = false;
+                    break;
+
+                } // end of if statement
+
+            } // end of for loop
+
+            if (validExpression || input == "exit") {break;}
+
+        } // end of while loop
+
+        if (input != "exit") {
+
+            Pair pair;
+        int negativeNum = countNegativeNumbers(input);
+
+        int numOps = std::count(input.begin(), input.end(), '*')
+        + std::count(input.begin(), input.end(), '/')
+        + std::count(input.begin(), input.end(), '+')
+        + std::count(input.begin(), input.end(), '-')
+        - negativeNum;
+
+        if (DEBUG) {
+
+            std::cout << "Number of multiplication operators: " << std::count(input.begin(), input.end(), '*')
+            << std::endl;
+            std::cout << "Number of division operators: " << std::count(input.begin(), input.end(), '/')
+            << std::endl;
+            std::cout << "Number of addition operators: " << std::count(input.begin(), input.end(), '+')
+            << std::endl;
+            std::cout << "Number of subtraction operators: " << std::count(input.begin(), input.end(), '-')
+             - negativeNum << std::endl;
+            std::cout << "Number of negative numbers: " << negativeNum << std::endl;
+            std::cout << "Total number of operators: " << numOps << std::endl;
+
+        } // end of if statement
+
+        for (int i = 0; i < numOps; i++) {
+            bool opFound = false;
 
             for (int i = 0; i < input.length(); i++) {
 
@@ -124,6 +153,12 @@ int main() {
 
             } // end of if statement
 
-    } // end of for loop
+        } // end of for loop
+
+        std::cout << "Result: " << input << std::endl;
+
+        } // end of if statement
+
+    } // end of while loop
 
 } // end of main
