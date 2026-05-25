@@ -34,8 +34,9 @@ int main() {
 
             bool validExpression = true;
 
-            std::cout << "Enter an expression containing only digits and the "
-                         "operators +, -, *, and /, or enter \"exit\" to close the program: ";
+            std::cout << "Enter an expression containing only digits, the decimal sign \".,\" and the "
+                         "operators +, -, *, and /, or enter \"exit\" to \n"
+                         "close the program: ";
             std::cin >> input;
 
             for (int i = 0; i < input.length(); i++) {
