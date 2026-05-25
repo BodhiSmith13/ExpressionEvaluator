@@ -67,6 +67,8 @@ int main() {
         + std::count(input.begin(), input.end(), '-')
         - negativeNum;
 
+        std::cout << "Input: " << input << std::endl;
+
         if (DEBUG) {
 
             std::cout << "Number of multiplication operators: " << std::count(input.begin(), input.end(), '*')
