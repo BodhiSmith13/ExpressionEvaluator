@@ -13,8 +13,6 @@
 
 int main() {
 
-    // DEBUG = true;
-
     if (!DEBUG) {
 
         std::string choice;
