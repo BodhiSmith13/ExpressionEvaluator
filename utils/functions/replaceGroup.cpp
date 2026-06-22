@@ -18,9 +18,11 @@ std::string replaceGroup(std::string input, std::string targetGroup, const std::
     for (int i = 0; i < input.length(); i++) {
 
         if (input.substr(i, length) == targetGroup) {
+
             input.replace(i, length, newGroup);
             break;
-        }
+
+        } // end of if statement
 
     } // end of for loop
 
@@ -31,17 +33,20 @@ std::string replaceGroup(std::string input, std::string targetGroup, const std::
 
         for (int i = 0; i < input.length(); i++) {
 
-            if (targetGroup[i] == '+' || targetGroup[i] == '-' || targetGroup[i] == '*' || targetGroup[i] == '/') {
+            if ((targetGroup[i] == '+' || targetGroup[i] == '-' || targetGroup[i] == '*' || targetGroup[i] == '/')
+                && i != 0) {
 
                 targetGroup.insert(i, ".0");
                 if (DEBUG)
-                    std::cout << "New Target Group: " << targetGroup << std::endl;
+                    std::cout << "Adding .0 to target group at index " << i << ", New Target Group: " << targetGroup
+                << std::endl;
                 return replaceGroup(input, targetGroup, newGroup);
 
-            }
-        }
+            } // end of if statement
 
-    }
+        } // end of for loop
+
+    } // end of if statement
 
     return input;
 
