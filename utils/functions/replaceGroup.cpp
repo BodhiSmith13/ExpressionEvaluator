@@ -2,7 +2,17 @@
 
 #include "replaceGroup.h"
 
-std::string replaceGroup(std::string input, const std::string& targetGroup, const std::string& newGroup) {
+#include <iostream>
+#include <ostream>
+
+#include "../values/debug.h"
+
+std::string replaceGroup(std::string input, std::string targetGroup, const std::string& newGroup) {
+
+    const std::string originalInput = input;
+
+    if (DEBUG)
+        std::cout << "Replacing group " << targetGroup << " with " << newGroup << " in input " << input << std::endl;
 
     int length = targetGroup.length();
     for (int i = 0; i < input.length(); i++) {
@@ -13,6 +23,25 @@ std::string replaceGroup(std::string input, const std::string& targetGroup, cons
         }
 
     } // end of for loop
+
+    if (originalInput == input) {
+
+        if (DEBUG)
+            std::cout << "Unaltered input detected." << std::endl;
+
+        for (int i = 0; i < input.length(); i++) {
+
+            if (targetGroup[i] == '+' || targetGroup[i] == '-' || targetGroup[i] == '*' || targetGroup[i] == '/') {
+
+                targetGroup.insert(i, ".0");
+                if (DEBUG)
+                    std::cout << "New Target Group: " << targetGroup << std::endl;
+                return replaceGroup(input, targetGroup, newGroup);
+
+            }
+        }
+
+    }
 
     return input;
 

@@ -8,11 +8,11 @@
 #include "utils/functions/doubleToCleanString.h"
 #include "utils/values/debug.h"
 #include "utils/functions/countNegativeNumbers.h"
+#include "utils/functions/stringToDouble.h"
 #include "utils/values/validOperators.h"
 
 
 int main() {
-
 
     if (!DEBUG) {
 
@@ -42,7 +42,7 @@ int main() {
 
                 if (!std::isdigit(input[i]) &&
                     std::find(validOperators.begin(), validOperators.end(), input[i]) == validOperators.end()
-                    && input != "exit") {
+                    && input != "exit" && input[i] != '.') {
 
                     std::cout << "This expression is not valid." << std::endl;
                     validExpression = false;

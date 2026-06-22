@@ -7,11 +7,15 @@
 
 #include "stringToDouble.h"
 
-double stringToDouble(std::string input) {
+#include "../values/debug.h"
 
-    std::cout << input[0] << std::endl;
+double stringToDouble(const std::string &input) {
+
+    if (DEBUG)
+        std::cout << input[0] << std::endl;
     if (input[0] ==  '-') {
-        std::cout << "Negative number detected" << std::endl;
+        if (DEBUG)
+            std::cout << "Negative number detected" << std::endl;
         return std::stod(input.substr(1, input.length() - 1)) * -1;
     }
 

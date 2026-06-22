@@ -6,6 +6,6 @@
 #define EXPRESSIONEVALUATOR_STRINGTODOUBLE_H
 #include <string>
 
-double stringToDouble(std::string input);
+double stringToDouble(const std::string &input);
 
 #endif //EXPRESSIONEVALUATOR_STRINGTODOUBLE_H
